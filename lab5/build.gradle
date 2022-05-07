@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+javafx {
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
+    implementation('org.controlsfx:controlsfx:11.1.0')
+    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+}
+application {
+    mainModule = 'gestiunebug'
+    mainClass = 'gestiunebug.Main'
+}
+test {
+    useJUnitPlatform()
+}
